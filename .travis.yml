@@ -1,0 +1,23 @@
+language: minimal
+sudo: required
+services:
+  - docker
+  
+before_install:
+  - docker build -t omawnakw/fullstacklab-react-test -f client/Dockerfile.dev ./client
+
+script:
+  - docker run -e CI=true omawnakw/fullstacklab-react-test npm test -- --coverage
+
+after_success:
+  - docker build -t omawnakw/fullstacklab-client ./client
+  - docker build -t omawnakw/fullstacklab-nginx ./nginx
+  - docker build -t omawnakw/fullstacklab-server ./server
+  - docker build -t omawnakw/fullstacklab-worker ./worker
+# Login to Dockerhub
+  - echo "$DOCKER_PASSWORD"| docker login -u "$DOCKER_ID" --password-stdin
+# Push images
+  - docker push omawnakw/fullstacklab-client
+  - docker push omawnakw/fullstacklab-nginx
+  - docker push omawnakw/fullstacklab-server
+  - docker push omawnakw/fullstacklab-worker
