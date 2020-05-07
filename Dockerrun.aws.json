@@ -1,6 +1,6 @@
 {
   "AWSEBDockerrunVersion": 2,
-  "containerDefinitions": [
+  "containerdefinitions": [
     {
       "name": "client",
       "image": "omawnakw/fullstacklab-client:latest",
