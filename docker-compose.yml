@@ -21,6 +21,10 @@ services:
       - PGUSER=postgres
       - PGHOST=postgres
       - PGDATABASE=postgres
+    networks:
+      default:
+        aliases:
+         - api        
     depends_on:
       - postgres
   nginx:
