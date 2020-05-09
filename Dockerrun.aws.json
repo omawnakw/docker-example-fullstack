@@ -2,7 +2,7 @@
   "AWSEBDockerrunVersion": 2,
   "authentication": {
     "bucket": "elasticbeanstalk-eu-central-1-567500519036",
-    "key": "/docker-lab-fullstack/.docker-config.json"
+    "key": "docker-lab-fullstack/.docker-config.json"
   },
   "containerDefinitions": [
     {
